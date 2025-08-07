@@ -45,10 +45,10 @@ def menu():
                     if elemento == objetivo:
                         return elemento
                 return None
-            Buscado = input("ingrese el nombre")
-            resultado = busqueda(Repartidores, Buscado)
+            buscado = input("ingrese el nombre")
+            resultado = busqueda(Repartidores, buscado)
             if resultado is not None:
-                print(f"el valor {Repartidores} esta en la lista")
+                print(f"el valor {Repartidores} esta en la lista") #detallistos
             else:
                 print("No se encuentra")
 
