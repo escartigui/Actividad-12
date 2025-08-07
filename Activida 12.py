@@ -1,39 +1,56 @@
-Repartidores = {}
 def quick_sort(listas):
     if len(listas) <= 1:
         return listas
 
     pivote = listas[0]
-    menores = [x for x in listas[1:] if x[1] < pivote[1]]
-    iguales = [x for x in listas if x[1] == pivote[1]]
-    mayores = [x for x in listas[1:] if x[1] > pivote[1]]
-    return quick_sort(menores) + iguales + quick_sort(mayores)
+    menores = [x for x in listas[1:] if x[1]['paquetes'] < pivote[1]['paquetes']]
+    iguales = [x for x in listas if x[1]['paquetes'] == pivote[1]['paquetes']]
+    mayores = [x for x in listas[1:] if x[1]['paquetes'] > pivote[1]['paquetes']]
+    return quick_sort(mayores) + iguales + quick_sort(menores)
+Repartidores = {}
 def menu():
+ while True:
     print("MENU")
     print("1.Agregar")
     print("2.Ordenar")
     print("3.Buscar")
     print("4.Estadistica")
     print("5.Salir")
+    op = int(input("ingrese una opcion: "))
 
-cantidad = int(input('Cantidad de Repartidores: '))
-for i in range(cantidad):
-    while True:
-        nombre = input("ingrese el nombre")
-        if nombre in Repartidores:
-            print("ya Utilizado")
-        else:
-         break
-    Repartidores[nombre] = {}
-    Repartidores[nombre]['paquetes'] = int(input("ingrese cantidad de paquetes: "))
-    Repartidores[nombre]['zonas'] = input("ingrese cantidad de zonas: ")
+    match op:
+        case 1:
+         cantidad = int(input('Cantidad de Repartidores: '))
+         for i in range(cantidad):
+          while True:
+            nombre = input("ingrese el nombre")
+            if nombre in Repartidores:
+             print("ya Utilizado")
+            else:
+                break
+          Repartidores[nombre] = {}
+          Repartidores[nombre]['paquetes'] = int(input("ingrese cantidad de paquetes: "))
+          Repartidores[nombre]['zonas'] = input("ingrese cantidad de zonas: ")
+        case 2:
+         print("\n Listado")
+         lista = list(Repartidores.items())
+         ordenados = quick_sort(lista)
 
-print("\n Busqueda secuencial")
-listas = list(Repartidores.values())
-ordenados = quick_sort(listas)
+         for nombres, valor in ordenados:
+          print(f"{nombres}: {valor}")
+        case 3:
+            print("Busqueda")
+            def busqueda(lista, objetivo):
+                for elemento in lista:
+                    if elemento == objetivo:
+                        return elemento
+                return None
+            datos = Repartidores.items()
+            Buscado = input("ingrese el nombre")
+            resultado = busqueda(datos, Buscado)
+            if resultado is not None:
+                print(f"el valor {resultado} esta en la lista")
+            else:
+                print("No se encuentra")
 
-for nombre, cantidad in ordenados:
-    datos = Repartidores[nombre]
-    print(f"nombre: {nombre}")
-    print(f"zonas: {datos['zonas']}")
-    print(f"paquetes: {datos['paquetes']}")
+menu()
