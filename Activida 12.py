@@ -51,5 +51,9 @@ def menu():
                 print(f"el valor {Repartidores} esta en la lista") #detallistos
             else:
                 print("No se encuentra")
-
+        case 4:
+            print("Estadistica")
+        case 5:
+            print("Hasta que nos volvamos a ver :3 ")
+            break
 menu()
