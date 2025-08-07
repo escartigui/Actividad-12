@@ -48,7 +48,7 @@ def menu():
             Buscado = input("ingrese el nombre")
             resultado = busqueda(Repartidores, Buscado)
             if resultado is not None:
-                print(f"el valor {resultado} esta en la lista")
+                print(f"el valor {Repartidores} esta en la lista")
             else:
                 print("No se encuentra")
 
