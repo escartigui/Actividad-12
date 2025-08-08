@@ -24,13 +24,29 @@ def menu():
          for i in range(cantidad):
           while True:
             nombre = input("ingrese el nombre")
-            if nombre in Repartidores:
+            if nombre == "":
+                print("Agrega el nombre")
+            elif nombre in Repartidores:
              print("ya Utilizado")
             else:
                 break
           Repartidores[nombre] = {}
-          Repartidores[nombre]['paquetes'] = int(input("ingrese cantidad de paquetes: "))
-          Repartidores[nombre]['zonas'] = input("ingrese cantidad de zonas: ")
+          while True:
+              try:
+                  paquetes = int(input("ingrese cantidad del paquete: "))
+                  if paquetes < 0:
+                      print("no puede ser negativo")
+                  else:
+                      Repartidores[nombre]['paquetes'] = paquetes
+                      break
+              except ValueError:
+                  print("debe ser entero")
+          while True:
+            zona = input("ingrese la zona: ")
+            if zona == "":
+                print("esta vacio")
+            else:
+                Repartidores[nombre]['zona'] = zona
         case 2:
          print("\n Listado")
          lista = list(Repartidores.items())
