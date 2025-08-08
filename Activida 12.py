@@ -47,6 +47,7 @@ def menu():
                 print("esta vacio")
             else:
                 Repartidores[nombre]['zona'] = zona
+                break
         case 2:
          print("\n Listado")
          lista = list(Repartidores.items())
@@ -64,7 +65,7 @@ def menu():
             buscado = input("ingrese el nombre")
             resultado = busqueda(Repartidores, buscado)
             if resultado is not None:
-                print(f"el valor {Repartidores} esta en la lista") #detallistos
+                print(f"{Repartidores[buscado]}: {buscado}") #detallistos
             else:
                 print("No se encuentra")
         case 4:
