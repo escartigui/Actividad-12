@@ -70,6 +70,20 @@ def menu():
                 print("No se encuentra")
         case 4:
             print("Estadistica")
+            if len(Repartidores) == 0:
+                print("no hay nada aqui")
+                continue
+            total = 0
+            for r in Repartidores.values():
+                total += r['paquetes']
+            print(f"el total de paquetes es: {total}")
+
+            reparti = len(Repartidores)
+            if reparti > 0:
+                promedio = total / reparti
+                print(f"El promedio es de: {promedio}")
+            else:
+                print("verifica, no hay nada aqui")
         case 5:
             print("Hasta que nos volvamos a ver :3 ")
             break
