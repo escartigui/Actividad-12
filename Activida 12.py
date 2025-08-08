@@ -84,6 +84,16 @@ def menu():
                 print(f"El promedio es de: {promedio}")
             else:
                 print("verifica, no hay nada aqui")
+
+            maxi = 0
+            for r in Repartidores.values():
+                if r['paquetes'] > maxi:
+                    maxi = r['paquetes']
+            mayores = []
+            for nombre, datos in Repartidores.items():
+                if datos['paquetes'] == maxi:
+                    mayores.append(nombre)
+            print(f"el de mayor venta: {maxi}, {mayores}")
         case 5:
             print("Hasta que nos volvamos a ver :3 ")
             break
